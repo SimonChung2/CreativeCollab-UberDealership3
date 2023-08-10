@@ -11,7 +11,7 @@ using System.Web.Http.Description;
 using System.Diagnostics;
 using CreativeCollab_UberDealership3.Models;
 
-namespace UberApplication.Controllers
+namespace CreativeCollab_UberDealership3.Controllers
 {
     public class RidesDataController : ApiController
     {
