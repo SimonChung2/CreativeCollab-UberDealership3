@@ -1,0 +1,41 @@
+﻿﻿@model CreativeCollab_UberDealership3.Models.ViewModels.UpdateCar
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit Car @Model.SelectedCar.CarID</h2>
+<form action="/car/update/@Model.SelectedCar.CarID" method="POST">
+    <div style="display:none;">
+        @* Pass through the car ID *@
+        <input type="text" name="CarID" value="@Model.SelectedCar.CarID" />
+    </div>
+    <div>
+        <label>Year:</label><input type="number" min="1900" name="Year" value="@Model.SelectedCar.Year" />
+    </div>
+    <div>
+        <label>Mileage(km):</label><input type="number" min="0" name="Mileage" value="@Model.SelectedCar.Mileage" />
+    </div>
+    <div>
+        <label>Price:</label><input type="number" min="1" name="Price" value="@Model.SelectedCar.Price" />
+    </div>
+    <div>
+        <label>Model </label>
+        <select name="ModelID">
+            @foreach (var CarModel in Model.CarModelOptions)
+            {
+                <option value="@CarModel.ModelID">@CarModel.ModelName</option>
+            }
+        </select>
+    </div>
+    <div>
+        <label>Dealer</label>
+        <select name="DealerID">
+            @foreach (var Dealer in Model.DealerOptions)
+            {
+                <option value="@Dealer.DealerID">@Dealer.DealerName</option>
+            }
+        </select>
+        <div>
+            <input class="btn-default" type="submit" value="Edit Car" />
+        </div>
+</form>

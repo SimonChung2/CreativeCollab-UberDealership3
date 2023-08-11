@@ -1,0 +1,42 @@
+﻿﻿@model CreativeCollab_UberDealership3.Models.ViewModels.CreateCar
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Add Car</h2>
+<form action="/car/create" method="POST">
+    <div>
+        <label>Year:</label><input type="number" min="1900" name="Year" />
+    </div>
+    <div>
+        <label>Mileage(km):</label><input type="number" min="0" name="Mileage" />
+    </div>
+    <div>
+        <label>Price:</label><input type="number" min="1" name="Price" />
+    </div>
+    <div>
+        <label>Car Model:</label>
+        <select name="ModelID">
+            @foreach (var carModel in Model.CarModelOptions)
+            {
+                <option value="@carModel.ModelID">@carModel.ModelName @carModel.Make</option>
+            }
+        </select>
+    </div>
+    <div>
+        <label>Dealer ID:</label>
+        <select name="DealerID">
+            @foreach (var dealer in Model.DealerOptions)
+            {
+                <option value="@dealer.DealerID">@dealer.DealerName </option>
+            }
+        </select>
+    </div>
+    <div>
+        <input class="btn-default" type="submit" value="Add Car" />
+    </div>
+
+
+
+</form>
+

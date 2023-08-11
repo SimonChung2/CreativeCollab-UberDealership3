@@ -27,7 +27,7 @@ namespace CreativeCollab_UberDealership3.Controllers
             {
                 RideId = a.RideId,
                 RideName = a.RideName,
-                RideNum = a.RideNum
+                //RideNum = a.RideNum
             }));
 
             return RideDtos;
@@ -43,7 +43,7 @@ namespace CreativeCollab_UberDealership3.Controllers
             {
                 RideId = ride.RideId,
                 RideName = ride.RideName,
-                RideNum = ride.RideNum
+                //RideNum = ride.RideNum
             };
             if (ride == null)
             {
