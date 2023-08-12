@@ -188,7 +188,8 @@
     <Compile Include="Controllers\CarModelDataController.cs" />
     <Compile Include="Controllers\DealerController.cs" />
     <Compile Include="Controllers\DealerDataController.cs" />
-    <Compile Include="Controllers\DriverDataController.cs" />
+    <Compile Include="Controllers\DriverController.cs" />
+    <Compile Include="Controllers\DriversDataController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\RideDataController.cs" />
@@ -322,6 +323,7 @@
     <Content Include="Views\CarModel\Edit.cshtml" />
     <Content Include="Views\CarModel\ConfirmDelete.cshtml" />
     <Content Include="Views\CarModel\Error.cshtml" />
+    <Content Include="Views\Driver\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

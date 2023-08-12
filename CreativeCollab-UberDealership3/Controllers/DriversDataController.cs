@@ -11,8 +11,10 @@ using System.Web.Http;
 using System.Web.Http.Description;
 using System.Web.Mvc;
 using System.Web.Script.Serialization;
-using HttpGetAttribute = System.Web.Http.HttpGetAttribute;
-using HttpPostAttribute = System.Web.Http.HttpPostAttribute;
+using HttpGetAttribute = System.Web.Mvc.HttpGetAttribute;
+using HttpPostAttribute = System.Web.Mvc.HttpPostAttribute;
+//using HttpGetAttribute = System.Web.Http.HttpGetAttribute;
+//using HttpPostAttribute = System.Web.Http.HttpPostAttribute;
 
 namespace CreativeCollab_UberDealership3.Controllers
 {
@@ -32,37 +34,54 @@ namespace CreativeCollab_UberDealership3.Controllers
             {
                 DriverID = c.DriverID,
                 DriverFirstName = c.DriverFirstName,
-                DriverLastName = c.DriverLastName
+                DriverLastName = c.DriverLastName,
+
+                Year = c.Cars.Year,
+                Price = c.Cars.Price,
+                Mileage = c.Cars.Mileage,
+
+                //CarModelName = c.CarModels.ModelName,
+                //CarMakeName = c.CarModels.Make,
+
+                //DealerName = c.Dealers.DealerName
             }));
 
             return Ok(DriverDto);
         }
 
         // GET: api/DriversData/5
+        [ResponseType(typeof(Driver))]
         [HttpGet]
-        [ResponseType(typeof(void))]
         public IHttpActionResult GetDriver(int id)
         {
             Driver driver = db.Drivers.Find(id);
-            if (driver == null)
-            {
-                return NotFound();
-            }
+
 
             DriverDto DriverDto = new DriverDto()
             {
                 DriverID = driver.DriverID,
                 DriverFirstName = driver.DriverFirstName,
-                DriverLastName = driver.DriverLastName
-            };
+                DriverLastName = driver.DriverLastName,
+                Year = driver.Cars.Year,
+                Price = driver.Cars.Price,
+                Mileage = driver.Cars.Mileage,
 
+                //CarModelName = c.CarModels.ModelName,
+                //CarMakeName = c.CarModels.Make,
+
+                //DealerName = c.Dealers.DealerName
+            };
+            if (driver == null)
+            {
+                return NotFound();
+            }
             return Ok(DriverDto);
         }
 
-        // PUT: api/DriversData/5
+        // POST: api/DriversData/UpdateDriver/3
         [HttpPost]
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutDriver(int id, Driver driver)
+        public IHttpActionResult UpdateDriver(int id, Driver driver)
         {
             if (!ModelState.IsValid)
             {
@@ -98,7 +117,7 @@ namespace CreativeCollab_UberDealership3.Controllers
         // POST: api/DriversData
         [ResponseType(typeof(Driver))]
         [HttpPost]
-        public IHttpActionResult PostDriver(Driver driver)
+        public IHttpActionResult AddDriver(Driver driver)
         {
             if (!ModelState.IsValid)
             {
