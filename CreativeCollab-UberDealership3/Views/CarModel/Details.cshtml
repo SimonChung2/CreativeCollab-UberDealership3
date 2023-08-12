@@ -1,0 +1,32 @@
+﻿﻿@model CreativeCollab_UberDealership3.Models.ViewModels.DetailsCarModel
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>@Model.SelectedCarModel.ModelName @Model.SelectedCarModel.Make </h2>
+
+<a class="crud_link" href="/carmodel/List">Back to List</a>
+<a class="crud_link" href="/carmodel/edit/@Model.SelectedCarModel.ModelID">Update</a>
+<a class="crud_link" href="/carmodel/confirmdelete/@Model.SelectedCarModel.ModelID">Delete</a>
+
+<br />
+<br />
+
+<div>Model: @Model.SelectedCarModel.ModelName</div>
+<div>Make: @Model.SelectedCarModel.Make</div>
+
+<div style="margin-top: 100px;">
+    <h3>Here are all the @Model.SelectedCarModel.ModelName @Model.SelectedCarModel.Make cars available:  </h3>
+    @foreach (var car in Model.RelatedCars)
+    {
+        <div>
+            <a class="crud_link" href="/car/details/@car.CarID">Car ID: @car.CarID</a>
+            <div>Mileage: @car.Mileage km</div>
+            <div>Price: $@car.Price</div>
+            <div>Dealer: @car.DealerName</div>
+        </div>
+        <br />
+    }
+</div>
+

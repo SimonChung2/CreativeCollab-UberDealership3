@@ -1,0 +1,15 @@
+﻿﻿@model IEnumerable<CreativeCollab_UberDealership3.Models.CarModel>
+@{
+    ViewBag.Title = "List";
+}
+
+<h2>Available Car Models</h2>
+<a class="crud_link" href="/carmodel/new">Add Car Model</a>
+
+@foreach (var CarModel in Model)
+{
+    <div class="car_detail"><a href="/carmodel/details/@CarModel.ModelID"> @CarModel.ModelName @CarModel.Make </a></div>
+
+
+}
+
