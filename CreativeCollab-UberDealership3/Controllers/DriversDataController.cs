@@ -49,6 +49,26 @@ namespace CreativeCollab_UberDealership3.Controllers
             return Ok(DriverDto);
         }
 
+        [HttpGet]
+        public IEnumerable<CarDto> ListDriversForCar(int id)
+        {
+            List<Driver> Drivers = db.Drivers.Where(a => a.CarID == id).ToList();
+            List<Driver> DriverDtos = new List<DriverDto>();
+
+            Drivers.ForEach(a => DriverDtos.Add(new DriverDto()
+            {
+                DriverID = a.DriverID,
+                DriverFirstName = a.DriverFirstName,
+                DriverLastName = a.DriverLastName,
+                
+
+                CarID = a.Cars.CarID,
+ 
+
+            }));
+            return DriverDtos;
+        }
+
         // GET: api/DriversData/5
         [ResponseType(typeof(Driver))]
         [HttpGet]
